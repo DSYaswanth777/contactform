@@ -1,0 +1,188 @@
+/* Reset styles for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFDFD;
+    font-family: Mulish, system-ui, sans-serif;
+}
+
+.form {
+    width: 500px;
+    position: relative;
+}
+
+.form input, .form textarea {
+    width: 100%;
+    height: 50px;
+    border: 2px solid rgb(206, 214, 221);
+    border-radius: 10px;
+    outline: none;
+    padding: 0 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.form textarea{
+    height: 80px;
+
+}
+.error{
+    color: red;
+
+}
+.form label {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 17px;
+    transition: top 0.3s, background-color 0.3s;
+    pointer-events: none;
+}
+
+.form .emailLabel {
+    top: 155px;
+    
+}
+
+.form .brandLabel {
+    top: 85px;
+}
+
+.form .mobileLabel {
+    top: 155px;
+    
+}
+
+.form .contactLabel {
+    top: 225px;
+
+}
+
+.form .messageLabel {
+    top: 290px;
+    background-color: #FFFDFD;
+
+
+}
+.form textarea{
+    padding-top: 15px
+}
+
+.form input:focus ~ .nameLabel,
+.form .name:valid ~ .nameLabel {
+    top: -12px;
+    background-color: #FFFDFD;
+}
+
+.form input:focus ~ .emailLabel,
+.form .email:valid ~ .emailLabel {
+    top: 128px;
+    background-color: #FFFDFD;
+}
+
+.form input:focus ~ .mobileLabel,
+.form .mobile:valid ~ .mobileLabel {
+    top: 128px;
+    background-color: #FFFDFD;
+}
+
+.form input:focus ~ .brandLabel,
+.form .brand:valid ~ .brandLabel {
+    top: 58px;
+    background-color: #FFFDFD;
+}
+
+.form input:focus ~ .contactLabel,
+.form .contact:valid ~ .contactLabel {
+    top: 197px;
+    background-color: #FFFDFD;
+}
+
+.form textarea:focus ~ .messageLabel,
+.form .textarea:valid ~ .messageLabel {
+    top: 268px;
+    background-color: #FFFDFD;
+}
+
+.resetBtn, .submitBtn{
+
+    padding: 15px;
+    border: none;
+    background-color: #EF5B21;
+    color: #ffff;
+    border-radius: 10px;
+    width: 120px;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.submitBtn{
+margin-left: 20px;
+}
+.submitBtn:hover ,.resetBtn:hover{
+    background-color: #ffff;
+    color: black;
+    border: 2px solid #EF5B21 ;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+img{
+    background-color: black;
+margin-top: 30px;
+}
+
+span{
+    color: red;
+}
+
+.heading{
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 20px;
+border-radius: 10px;
+}
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+    .gfg-div {
+        background-color: #63c971;
+        color: #fff;
+    }
+}
+ 
+/* For Tablet View */
+@media screen and (min-device-width: 768px) 
+    and (max-device-width: 1024px) {
+    .form{
+width: 550px;
+    }
+}
+ 
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) 
+    and (orientation: portrait) {
+    .form{
+        width: 280px;
+    }
+    
+.form label {
+    font-size: 16px;
+}
+}
+ 

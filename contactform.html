@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Consultation | Digital Adventure</title>
+</head>
+
+<body>
+    <section>
+        <img
+            src="https://digitaladventure.in/wp-content/uploads/elementor/thumbs/new-01-q95iol5znf4bce6net7q1c9ekrthloq44x4te5rk5s.png"
+            alt=""
+            height="60"
+            width="100"
+        />
+
+        <div class="heading">Book Your Free Consultation</div>
+
+        <div class="form">
+
+            <input type="text" class="name" required />
+            <label for="name" class="nameLabel">Name </label>
+            <input type="text" class="brand" required />
+            <label for="brand" class="brandLabel">Brand Name </label>
+            <input type="mail" class="email" required />
+            <label for="email" class="emailLabel">Email </label>
+            <input type="tel" class="contact" required />
+            <label for="contact" class="contactLabel">Contact No </label>
+            <textarea class="message" id="textArea" rows="7" cols="62" required></textarea>
+            <label for="textArea" class="messageLabel">Message</label>
+            <button class="resetBtn" onclick="resetForm()">Reset</button>
+            <button class="submitBtn" onclick="submitForm()">Submit</button>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var form = document.querySelector('.form');
+                var inputs = form.querySelectorAll('input[required], textarea[required]');
+
+                inputs.forEach(function (input) {
+                    input.addEventListener('input', function () {
+                        resetStyles(input);
+                    });
+                });
+            });
+
+            function resetForm() {
+                var form = document.querySelector('.form');
+                var inputs = form.querySelectorAll('input, textarea');
+
+                inputs.forEach(function (input) {
+                    input.value = '';
+                    resetStyles(input);
+                });
+            }
+
+            function submitForm() {
+                var form = document.querySelector('.form');
+                var nameInput = form.querySelector('.name');
+                var emailInput = form.querySelector('.email');
+                var contactInput = form.querySelector('.contact');
+                var inputs = form.querySelectorAll('input[required]');
+
+                var isValid = true;
+
+                inputs.forEach(function (input) {
+                    if (!input.value.trim()) {
+                        showErrorStyles(input);
+                        isValid = false;
+                    } else {
+                        resetStyles(input);
+                    }
+                });
+
+                if (!isValid) {
+                    return; // Stop submission if any field is invalid
+                }
+
+                // Additional validation for name, email, and contact
+                var nameRegex = /^[a-zA-Z\s]*$/;
+                if (!nameRegex.test(nameInput.value.trim())) {
+                    showErrorStyles(nameInput);
+                    isValid = false;
+                } else {
+                    resetStyles(nameInput);
+                }
+
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value.trim())) {
+                    showErrorStyles(emailInput);
+                    isValid = false;
+                } else {
+                    resetStyles(emailInput);
+                }
+
+                var contactRegex = /^[0-9]+$/;
+                if (!contactRegex.test(contactInput.value.trim())) {
+                    showErrorStyles(contactInput);
+                    isValid = false;
+                } else {
+                    resetStyles(contactInput);
+                }
+
+                if (isValid) {
+                    var userName = nameInput.value.trim();
+                    alert("Thank you, " + userName + "! We will contact you soon.");
+                }
+            }
+
+            function showErrorStyles(input) {
+                var label = input.nextElementSibling;
+                input.classList.add('error');
+                label.classList.add('error');
+                input.style.border = '1px solid red'; // Set the border directly on the input element
+            }
+
+            function resetStyles(input) {
+                var label = input.nextElementSibling;
+                input.classList.remove('error');
+                label.classList.remove('error');
+                input.style.border = ''; // Reset the border to its default state
+                input.style.color = ''; // Reset the color to its default state
+            }
+        </script>
+
+    </section>
+</body>
+</html>
